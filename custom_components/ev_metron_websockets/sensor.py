@@ -40,7 +40,7 @@ async def async_setup_entry(
             L1CurrentSolar(hub),
             ButtonSetChargingCurrent(hub),
             MainFuseRating(hub),
-            DinamicChargingCurrentLimit(hub),
+            DynamicChargingCurrentLimit(hub),
             SolarChargingEnable(hub),
             SolarChargingEnableShort(hub),
             TotalChargingPower(hub),
@@ -183,7 +183,7 @@ class L3CurrentStation(MetronEVBaseEntity):
     def state(self) -> str:
         """Return the state of the sensor."""
 
-        return self._hub.L1_current_station
+        return self._hub.L3_current_station
 
 class L1CurrentBuilding(MetronEVBaseEntity):
     """Metron station building phase 1 current."""
@@ -311,14 +311,14 @@ class MainFuseRating(MetronEVBaseEntity):
 
         return self._hub.main_fuse_rating
 
-class DinamicChargingCurrentLimit(MetronEVBaseEntity):
+class DynamicChargingCurrentLimit(MetronEVBaseEntity):
     """Metron station status entity."""
 
     def __init__(self, hub) -> None:
         """Initialize the sensor."""
         super().__init__(hub)
-        self._attr_unique_id = f"{hub._name}_dinamic_charging_current_limit"
-        self._attr_name = f"{hub._name} dinamic charging current limit"
+        self._attr_unique_id = f"{hub._name}_dynamic_charging_current_limit"
+        self._attr_name = f"{hub._name} dynamic charging current limit"
         self._attr_state_class = SensorStateClass.MEASUREMENT
         self._attr_unit_of_measurement = UnitOfElectricCurrent.AMPERE
         self._attr_device_class = SensorDeviceClass.CURRENT
@@ -327,7 +327,7 @@ class DinamicChargingCurrentLimit(MetronEVBaseEntity):
     def state(self) -> str:
         """Return the state of the sensor."""
 
-        return self._hub.dinamic_charging_current_limit
+        return self._hub.dynamic_charging_current_limit
 
 class SolarChargingEnable(MetronEVBaseEntity):
     """Metron station status entity."""
