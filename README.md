@@ -68,7 +68,7 @@ details:
       text: Signal Strength
       icon: mdi:signal
   group1:
-    - entity_id: sensor.doma_dinamic_charging_current_limit
+    - entity_id: sensor.doma_dynamic_charging_current_limit
       text: Current Limit
       unit_show: true
       service: ev_metron_websockets.set_dynamic_limit

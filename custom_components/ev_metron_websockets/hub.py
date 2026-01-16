@@ -39,7 +39,7 @@ class MetronEVHub:
         self._House_energy = 0
         self._button_set_charging_current = 0
         self._main_fuse_rating = 0
-        self._dinamic_charging_current_limit = 0
+        self._dynamic_charging_current_limit = 0
         self._solar_charging_enable = 0
         self._solar_charging_enable_esp = 0
         self._total_charging_power = 0
@@ -83,7 +83,7 @@ class MetronEVHub:
                         self._L1_current_solar = latest_message.get("L1_current_solar")
                         self._button_set_charging_current = latest_message.get("Button_set_charging_current")
                         self._main_fuse_rating = latest_message.get("Main_fuse_rating")
-                        self._dinamic_charging_current_limit = latest_message.get("Dinamic_charging_current_limit")
+                        self._dynamic_charging_current_limit = latest_message.get("Dynamic_charging_current_limit")
                         self._solar_charging_enable_esp = latest_message.get("Solar_charging_enable_ESP32_reply")
                         self._solar_charging_enable = latest_message.get("Solar_charging_enable")
                         self._total_charging_power = latest_message.get("Total_charging_power")
@@ -175,9 +175,9 @@ class MetronEVHub:
         return self._main_fuse_rating
 
     @property
-    def dinamic_charging_current_limit(self) -> str:
-        """Return the value of dinamic_charging_current_limit."""
-        return self._dinamic_charging_current_limit
+    def dynamic_charging_current_limit(self) -> str:
+        """Return the value of dynamic_charging_current_limit."""
+        return self._dynamic_charging_current_limit
 
     @property
     def solar_charging_enable(self) -> str:

@@ -17,8 +17,8 @@ def parse_string(input_string):
 def assign_variables(values):
     """Assign values to named variables."""
     var_names = ['Status', 'L1_current_station', 'L2_current_station', 'L3_current_station', 'L1_current_building', 'L2_current_building', 'L3_current_building', 'L1_current_solar', 'Button_set_charging_current', 'Main_fuse_rating',
-                 'Charging_cable_max_current', 'Vreg1_set_charging_current', 'Vreg2_set_charging_current', 'Station_max_charging_current', 'Dinamic_charging_current_limit', 'Solar_charging_enable', 'RFID_enable', 'PWMRegister_ESP32_reply_Amps', 'Solar_charging_enable_ESP32_reply', 'TCA0_cmp2',
-                 'Dinamic_Enable', 'Total_charging_power', 'This_charge_energy', 'hour_counter', 'minute_counter', 'Previous_charge_energy', 'Since_last_reset_energy', 'Lifetime_energy', 'PWMRegister_ESP32_slider_Amps', 'WiFi_to_network_enable',
+                 'Charging_cable_max_current', 'Vreg1_set_charging_current', 'Vreg2_set_charging_current', 'Station_max_charging_current', 'Dynamic_charging_current_limit', 'Solar_charging_enable', 'RFID_enable', 'PWMRegister_ESP32_reply_Amps', 'Solar_charging_enable_ESP32_reply', 'TCA0_cmp2',
+                 'Dynamic_Enable', 'Total_charging_power', 'This_charge_energy', 'hour_counter', 'minute_counter', 'Previous_charge_energy', 'Since_last_reset_energy', 'Lifetime_energy', 'PWMRegister_ESP32_slider_Amps', 'WiFi_to_network_enable',
                  'Total_house_power', 'House_energy', 'Solar_phases', 'House_phases', 'Car_phases', 'Total_solar_power', 'Solar_energy', 'Solar_SURPLUS_power', 'WiFi_to_network_state', 'Local_network_IP_string',
                  'ESP32_timer_delay', 'HC12_enable', 'number_of_stations', 'HC12_Channel', 'HC12_Signal_Present']
 
@@ -44,13 +44,13 @@ def assign_variables_json(values):
         "Vreg1_set_charging_current": json_object['l'],
         "Vreg2_set_charging_current": json_object['m'],
         "Station_max_charging_current": json_object['n'],
-        "Dinamic_charging_current_limit": json_object['o'],
+        "Dynamic_charging_current_limit": json_object['o'],
         "Solar_charging_enable": json_object['p'],
         "RFID_enable": json_object['q'],
         "Pwmregister_ESP32_reply_Amps": json_object['r'],
         "Solar_charging_enable_ESP32_reply": json_object['s'],
         "TCA0_cmp2": json_object['t'],
-        "Dinamic_Enable": json_object['u'],
+        "Dynamic_Enable": json_object['u'],
         "Total_charging_power": json_object['A'],
         "This_charge_energy": json_object['B'],
         "hour_counter": json_object['C'],
