@@ -1,11 +1,6 @@
-"""Number entities for Metron EV Station."""
-
-from homeassistant.components.number import (
-    NumberEntity,
-    NumberMode,
-)
+from homeassistant.components.number import NumberEntity, NumberMode
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import UnitOfTime
+from homeassistant.const import UnitOfTime, UnitOfElectricCurrent
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
@@ -13,6 +8,7 @@ from .const import DOMAIN
 from .entity import MetronEVBaseEntity
 from .hub import MetronEVHub
 
+MAX_VALUE = 32
 
 async def async_setup_entry(
     hass: HomeAssistant,
@@ -60,8 +56,6 @@ class ChargeDelayTimer(MetronEVBaseEntity, NumberEntity):
         await self._hub.perform_action(payload)
 
 
-MAX_VALUE = "32"
-
 class DynamicCurrentLimit(MetronEVBaseEntity, NumberEntity):
     """Number entity for setting the dynamic charging current limit."""
 
@@ -76,40 +70,18 @@ class DynamicCurrentLimit(MetronEVBaseEntity, NumberEntity):
         self._attr_native_max_value = MAX_VALUE
         self._attr_native_step = 1
 
-        self._attr_native_unit_of_measurement = (
-            UnitOfElectricCurrent.AMPERE
-        )
-
-        self._attr_mode = "slider"
+        self._attr_native_unit_of_measurement = UnitOfElectricCurrent.AMPERE
+        self._attr_mode = NumberMode.SLIDER
         self._attr_icon = "mdi:current-ac"
 
     @property
     def native_value(self) -> float | None:
         """Return the current charging current limit."""
         try:
-            value = int(self._hub.dynamic_charging_current_limit)
-
-            if value < 0:
-                return MAX_VALUE
-
-            if value > MAX_VALUE:
-                return MAX_VALUE
-
-            return value
-
-        except (ValueError, TypeError):
+            return int(self._hub.dynamic_charging_current_limit)
+        except Exception:
             return None
 
-    async def async_set_native_value(self, value: float) -> None:
-        """Set the charging current limit."""
-        value = int(value)
-
-        if value < 0:
-            value = MAX_VALUE
-
-        if value > MAX_VALUE:
-            value = MAX_VALUE
-
-        payload = f"SLIDE{value}"
-
-        await self._hub.perform_action(payload)
+    async def async_set_native_value(self, value):
+        value = max(0, min(MAX_VALUE, int(value)))
+        await self._hub.perform_action(f"SLIDE{value}")
