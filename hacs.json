@@ -1,5 +1,5 @@
 {
-    "name": "Metron EV Websockets",
+    "name": "Custom Metron EV Websockets",
     "content_in_root": false,
     "render_readme": true,
     "zip_release": true,
