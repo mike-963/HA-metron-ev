@@ -13,7 +13,7 @@ There are 2 different methods of installing the custom component
 ### HACS installation
 
 1. Add this repository from HACS->Integrations->Custom repositories.
-2. Enter https://github.com/OmegaModr/home-assistant-metron-ev and select integration as the type
+2. Enter https://github.com/mike-963/HA-metron-ev and select integration as the type
 3. Install the latest version
 4. Restart Home Assistant.
 5. Install the component from Settings->Integrations. You may have to clear the browser cache to make the Metron integration appear in the list.
@@ -23,7 +23,7 @@ There are 2 different methods of installing the custom component
 1. Make sure you have git installed on your machine.
 2. Navigate to you home assistant configuration folder.
 3. Create a `custom_components` folder of it does not exist, navigate down into it after creation.
-4. Execute the following command: `git clone https://github.com/OmegaModr/home-assistant-metron-ev.git ev_metron_websockets`
+4. Execute the following command: `git clone https://github.com/mike-963/HA-metron-ev ev_metron_websockets`
 
 ## Frontend cards
 
